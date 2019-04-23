@@ -1,32 +1,35 @@
 class Operador{
+	public int soma, diminui, multiplica, divisao, resto;
+	public double soma1, diminui1, multiplica1, divisao1, resto1;
 
-	public int x,y;
-	public float x,y;
-	
-
-	resto(){}
-
-	soma(x,y){
-		soma = x+y;
-		return soma;
+	public void setSoma(int a,int b){
+		this.soma = a + b;
 	}
-
-	incremento(x){
-		x++;
-		return x;
+	public void setDiminui(int a,int b){
+		this.diminui = a - b;
 	}
-
-	multiplicacao(x,y){
-		result = x*y;
-		return result; 
+	public void setMultiplica(int a,int b){
+		this.multiplica = a * b;
 	}
-
-	divisao(x,y){
-		result = x/y;
-		return result;
+	public void setDivisao(int a,int b){
+		this.divisao = a / b;
 	}
-
-	diferenca(x,y){
-		return result = x-y;
+	public void setResto(int a,int b){
+		this.resto = a % b;
+	}
+	public void setSoma1(double a,double b){
+		this.soma1 = a + b;
+	}
+	public void setDiminui1(double a,double b){
+		this.diminui1 = a - b;
+	}
+	public void setMultiplica1(double a,double b){
+		this.multiplica1 = a * b;
+	}
+	public void setDivisao1(double a,double b){
+		this.divisao1 = a / b;
+	}
+	public void setResto1(double a,double b){
+		this.resto1 = a % b;
 	}
 }
