@@ -1,19 +1,19 @@
 class Interpretador{
-	private Variaveis[] vari;
+	private Variavel[] vari;
 	//public Operaçoes op;
 	private String[] operaçaoMatematica = {"+","-","*","/","%"};
 
 	public Interpretador(){
 		//this.op = new Operaçoes();
-		this.vari = new Variaveis[5];
+		this.vari = new Variavel[5];
 		for (int i=0;i<this.vari.length;i++){
-			this.vari[i] = new Variaveis();
+			this.vari[i] = new Variavel();
 		}
 	}
-	public void setVari(Variaveis[] v){
+	public void setVari(Variavel[] v){
 		this.vari = v;
 	}
-	public Variaveis[] getVari(){
+	public Variavel[] getVari(){
 		return this.vari;
 	}
 	public void imprime(){

@@ -17,7 +17,7 @@ class Main{
 			File file = new File("texte.erc"); //texte.erc é so o nome do arquivo, pode ser qualque nome e qualquer extenção
 			Scanner input = new Scanner(file);
 			Interpretador intp = new Interpretador();
-			Variaveis[] v = intp.getVari();
+			Variavel[] v = intp.getVari();
 
 			while(input.hasNextLine()){
 				line = input.nextLine(); //captura uma linha do testo
