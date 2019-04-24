@@ -10,7 +10,7 @@ class Main{
 			char[] alfabeto = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 			char[] numeros = {'0','1','2','3','4','5','6','7','8','9'};
 			char[] operaçao = {'+','-','*','/','%','='};
-			String line,nome="",valor="";
+			String line,nome,valor;
 			int i,x,val,interador=0;
 			char a,n,o,c,c2;
 
@@ -20,6 +20,8 @@ class Main{
 			Variavel[] v = intp.getVari();
 
 			while(input.hasNextLine()){
+				nome = "";
+				valor = "";
 				line = input.nextLine(); //captura uma linha do testo
 				for (i=0;i<line.length();i++){ //anda caracter por caracter desta linha
 					c = line.charAt(i); // salva este caracter na variavel c;
@@ -29,25 +31,25 @@ class Main{
 							a = alfabeto[x];
 							if (c == a){
 								nome=nome+c; //se for uma letra, ela concatena na variavel nome
-								continue;
+								break;
 							}
 							if (c == '='){
 								v[interador].nome = nome; //quando o caracter for igual ao "=", ele salva o nome, no vetor
-								continue;
+								break;
 							}
 						}
 						for (x=0;x<10;x++){ //faz a mesma coisa que o for de antes, mas com os numeros
 							n = numeros[x]; //porem ele salva como string
 							if (c == n){
 								valor = valor+c;
-								continue;
+								break;
 							}
 						}
-
+						break;
 					}
-					val = Integer.parseInt(valor); //transforma a string valor em inteiro
-					v[interador].valor=val; // manda para o vetor na mesma posição que o nome
 				}
+				val = Integer.parseInt(valor); //transforma a string valor em inteiro
+				v[interador].valor=val; // manda para o vetor na mesma posição que o nome
 				interador++; // controla as posiçoes do vetor
 				//System.out.println(line);
 			}
