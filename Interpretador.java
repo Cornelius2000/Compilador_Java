@@ -10,6 +10,7 @@ class Interpretador{
 			this.vari[i] = new Variavel();
 		}
 	}
+	
 	public void setVari(Variavel[] v){
 		this.vari = v;
 	}

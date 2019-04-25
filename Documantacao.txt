@@ -20,3 +20,4 @@ string		| str
 ==			|  == ->comparação
 !=			|  != ->comparaçao(diferença)
 %			|  % -> resto(mod)
+			|	#Comentarios ;

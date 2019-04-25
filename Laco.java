@@ -6,6 +6,7 @@ class Laco{
 		this.y = y;
 	}
 
+
 	public setLaco(){
 
 		Operador.soma(a, 1)	

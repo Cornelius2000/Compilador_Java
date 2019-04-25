@@ -1,1 +1,13 @@
-nome = 5;
+#primeira parte da linguagem, aonde ficam as declarações das variaveis
+usadas no decorrer do codigo;
+void DecInit(){
+	in a;
+
+}Decend;
+
+#segunda parte da linguagem, aonde fica a logica do programa;
+LogicInit(){
+	a = 2;
+	prin("%d", a); 	
+
+}LogicEnd;
