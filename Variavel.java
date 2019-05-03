@@ -5,6 +5,7 @@ class Variavel{
 
 	public Variavel(){
 		this.nome = "@";
-		this.valorInteiro = -1;
+		this.valorInteiro = -99;
+		this.valorQuebrado = -1;
 	}
 }

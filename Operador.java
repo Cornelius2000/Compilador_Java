@@ -1,6 +1,6 @@
 class Operador{
-	public int soma, diminui, multiplica, divisao, resto;
-	public double soma1, diminui1, multiplica1, divisao1, resto1;
+	public int soma, diminui, multiplica, resto;
+	public double soma1, diminui1, multiplica1, divisao1, resto1, divisao;
 
 	public Operador(){
 		this.soma = 0;
@@ -24,7 +24,7 @@ class Operador{
 		this.multiplica = a * b;
 	}
 	public void setDivisao(int a,int b){
-		this.divisao = a / b;
+		this.divisao = ((double )a / b);
 	}
 	public void setResto(int a,int b){
 		this.resto = a % b;

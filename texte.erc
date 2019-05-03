@@ -1,15 +1,6 @@
-#primeira parte da linguagem, aonde ficam as declarações das variaveis
-usadas no decorrer do codigo;
-
-DecInit(){
-	in a;
-
-}Decend;
-
-#segunda parte da linguagem, aonde fica a logica do programa;
-
-LogicInit(){
-	a = 2;
-	prin("%d", a); 	
-
-}LogicEnd;
+a1=6*6;
+abobora= 7*10;
+caixa = 3-9;
+blabla = 10/3;
+z = 10%3;
+imp(a1);
