@@ -1,6 +1,6 @@
 DOCUMENTACAO
 -------------------------
-if() 		| se() 
+if() 		| se()
 else 		| ent()
 for() 		| la(i=0; i<k; i++)
 int 		| in
@@ -21,3 +21,5 @@ string		| str
 !=			|  != ->comparaçao(diferença)
 %			|  % -> resto(mod)
 			|	#Comentarios ;
+and		| e 
+or 		| ou
