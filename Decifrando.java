@@ -1,8 +1,8 @@
 class Decifrando{
 	private char[] alfabeto = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-	private char[] numeros = {'0','1','2','3','4','5','6','7','8','9'};
-	private char[] operaçao = {'+','-','*','/','%'};
-	private char[] importante = {'(',')','=',':','{','}',' '};
+	private char[] numeros = {'0','1','2','3','4','5','6','7','8','9','.'};
+	private char[] operaçao = {'+','-','*','/','%','!'};
+	private char[] importante = {'(',')','=',':','{','}',' ','"'};
 	private char[] nome;
 	private char[] valor;
 	private char c,c1,a,res,o;
@@ -57,11 +57,12 @@ class Decifrando{
 		return 'I';
 	}
 	public char setInt(char n,int inc){
-		for (x=0;x<10;x++){ 
+		for (x=0;x<11;x++){ 
 			c = numeros[x];
 			//System.out.println(n+" "+c);
 			if (this.c1 == 'S'){
 				if (n == c){
+					//System.out.println(c+" "+n);
 					setValor(n,inc); //manda para função que salva os numeros
 					return '0';
 				}
@@ -71,7 +72,7 @@ class Decifrando{
 		return 'O';
 	}
 	public char setOpe(char n){
-		for (x=0;x<5;x++){ 
+		for (x=0;x<6;x++){ 
 			o = operaçao[x]; 
 			//System.out.println(n+" "+c);
 			if (n == o){
@@ -91,15 +92,16 @@ class Decifrando{
 		if (n == ' '){return 'P';}
 		if (n == '('){
 			bla = getNome();
-			if (bla == "imp"){
-				//System.out.println(bla);
+			//System.out.println("    "+bla);
+			if (bla.equals("imp")){
+				//System.out.println("    "+bla);
+				limpaNome();
 				return 'P';
 			}
-			limpaNome();
 		}
 		if (n == ')'){
 			bla = getNome();
-			//System.out.println(bla);
+			//System.out.println("XXXXXXXX"+bla);
 			return 'B';
 		}
 		return 'P';

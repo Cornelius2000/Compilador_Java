@@ -38,7 +38,34 @@ class Interpretador{
 	public Variavel[] getVari(){
 		return this.vari;
 	}
-	public void desvOperaçao(int i){//aqui vai ser verificado qual é a operação a ser feita, ***SOMENTE PARA INTEIROS, FALTA COMPLETAR
+	public void desvOperaçaoDbl(int i){//aqui vai ser verificado qual é a operação a ser feita, ***SOMENTE PARA INTEIROS, FALTA COMPLETAR
+		if (this.op == '+'){
+			//System.out.println("eae "+this.valorInt[0]+" "+this.valorInt[1]);
+			o.setSoma1(this.valorDbl[0],this.valorDbl[1]);
+			this.vari[i].valorQuebrado = o.soma1;
+		}
+		if (this.op == '-'){
+			o.setDiminui1(this.valorDbl[0],this.valorDbl[1]);
+			this.vari[i].valorQuebrado = o.diminui1;
+		}
+		if (this.op == '*'){
+			o.setMultiplica1(this.valorDbl[0],this.valorDbl[1]);
+			this.vari[i].valorQuebrado = o.multiplica1;
+		}
+		if (this.op == '/'){
+			o.setDivisao1(this.valorDbl[0],this.valorDbl[1]);
+			this.vari[i].valorQuebrado = o.divisao1;
+		}
+		if (this.op == '%'){
+			o.setResto1(this.valorDbl[0],this.valorDbl[1]);
+			this.vari[i].valorQuebrado = o.resto1;
+		}
+		if (this.op == '!'){
+			o.setDivisaoInteira1(this.valorDbl[0],this.valorDbl[1]);
+			this.vari[i].valorInteiro = (int)o.divisaoInteira1;
+		}
+	}
+	public void desvOperaçaoInt(int i){//aqui vai ser verificado qual é a operação a ser feita, ***SOMENTE PARA INTEIROS, FALTA COMPLETAR
 		if (this.op == '+'){
 			//System.out.println("eae "+this.valorInt[0]+" "+this.valorInt[1]);
 			o.setSoma(this.valorInt[0],this.valorInt[1]);
@@ -60,13 +87,17 @@ class Interpretador{
 			o.setResto(this.valorInt[0],this.valorInt[1]);
 			this.vari[i].valorInteiro = o.resto;
 		}
+		if (this.op == '!'){
+			o.setDivisaoInteira(this.valorInt[0],this.valorInt[1]);
+			this.vari[i].valorInteiro = o.divisaoInteira;
+		}
 	}
 	public void imprime(){
 		for (int x=0;x < this.vari.length;x++){
 			if ((this.vari[x].nome != "@")&&(this.vari[x].valorInteiro != -99)){
 				System.out.println(this.vari[x].nome+" "+this.vari[x].valorInteiro);
 			}
-			if ((this.vari[x].nome != "@")&&(this.vari[x].valorQuebrado != -1)){
+			if ((this.vari[x].nome != "@")&&(this.vari[x].valorQuebrado != -99)){
 				System.out.print(this.vari[x].nome+" ");
 				System.out.printf("%.2f %n", this.vari[x].valorQuebrado);
 			}

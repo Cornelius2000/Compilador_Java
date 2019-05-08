@@ -1,18 +1,20 @@
 class Operador{
-	public int soma, diminui, multiplica, resto;
-	public double soma1, diminui1, multiplica1, divisao1, resto1, divisao;
+	public int soma, diminui, multiplica, resto, divisaoInteira;
+	public double soma1, diminui1, multiplica1, divisao1, resto1, divisao, divisaoInteira1;
 
 	public Operador(){
 		this.soma = 0;
 		this.diminui = 0;
 		this.multiplica = 0;
 		this.divisao = 0;
+		this.divisaoInteira = 0;
 		this.resto = 0;
 		this.soma1 = 0.0;
 		this.diminui1 = 0.0;
 		this.multiplica1 = 0.0;
 		this.divisao1 = 0.0;
 		this.resto1 = 0.0;
+		this.divisaoInteira1 = 0.0;
 	}
 	public void setSoma(int a,int b){
 		this.soma = a + b;
@@ -43,5 +45,11 @@ class Operador{
 	}
 	public void setResto1(double a,double b){
 		this.resto1 = a % b;
+	}
+	public void setDivisaoInteira(int a,int b){
+		this.divisaoInteira = a / b;
+	}
+	public void setDivisaoInteira1(double a,double b){
+		this.divisaoInteira1 = a / b;
 	}
 }

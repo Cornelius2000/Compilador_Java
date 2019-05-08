@@ -11,7 +11,8 @@
 class Inserir{
 	private String nome,valor,comparador;
 	private int val,som=0;
-	private char ret, op='0';
+	private double valD;
+	private char iD,ret, op='0';
 	public Interpretador intp = new Interpretador();
 	public Variavel[] v = intp.getVari();
 	public Decifrando d = new Decifrando();
@@ -33,8 +34,11 @@ class Inserir{
 			intp.setOperador(ret); // manda o operador para a função na classe interpretador
 			valor = ""; // zera a string valor
 			valor = d.getValor(); // busca o valor que esta antes do operador
-			val = Integer.parseInt(valor); // transforma para inteiro
-			intp.setValoresInt(val,som); // passa esse valor para um vetor da classe interpretador(que depois vai ser feita a soma
+			iD = intDouble(valor);
+			if (iD == 'I'){intp.setValoresInt(val,som);}
+			else {intp.setValoresDbl(valD,som);}
+			//val = Integer.parseInt(valor); // transforma para inteiro
+			//intp.setValoresInt(val,som); // passa esse valor para um vetor da classe interpretador(que depois vai ser feita a soma
 			limpaValor();  // limpa o valor do vetor da classe Decifrando;
 			return 'P';
 		}
@@ -43,15 +47,19 @@ class Inserir{
 				som++;
 				valor = "";
 				valor = d.getValor();
-				val = Integer.parseInt(valor);
-				intp.setValoresInt(val,som);
+				iD = intDouble(valor);
+				if (iD == 'I'){intp.setValoresInt(val,som);}
+				else {intp.setValoresDbl(valD,som);}
+				//intp.setValoresInt(val,som);
 				return 'S';
 			}
 			else {  //se não tiver nenhuma operação na linha, entra neste if e faz como se fosse um valor normal
 				valor = "";
 				valor = d.getValor();
-				val = Integer.parseInt(valor);
-				v[i].valorInteiro=val;
+				iD = intDouble(valor);
+				if (iD == 'I'){v[i].valorInteiro=val;}
+				else {v[i].valorQuebrado=valD;}
+				//v[i].valorInteiro=val;
 			}
 			d.limpaVet();
 			return 'F';
@@ -62,6 +70,7 @@ class Inserir{
 		intp.imprime();
 	}
 	public void limpa(){
+		iD = '0';
 		d.limpaVet();
 	}
 	public void limpaValor(){
@@ -69,19 +78,36 @@ class Inserir{
 	}
 	public void operaçao(int i){
 		if (this.op != '0'){
-			intp.desvOperaçao(i); //chama a função desvOperação, da classe interpretador, com o numero da linha que esta lendo
+			if (iD == 'I'){intp.desvOperaçaoInt(i);}//chama a função desvOperação, da classe interpretador, com o numero da linha que esta lendo
+			else{intp.desvOperaçaoDbl(i);}
+			//intp.desvOperaçao(i); //chama a função desvOperação, da classe interpretador, com o numero da linha que esta lendo
 			this.op = '0'; // transforma op para 0
 			intp.limpaValor(); // limpa o vetor de interpretador
 		}
 	}
-	public void buscaVariavel(){
+	public void buscaVariavel(){//se o que estiver dentro de 'd.bla', for uma variavel, ele printa o valor
 		for (int i=0;i<v.length;i++){ //for do tamanho do vetor variaveis
 			comparador = v[i].nome;
-			if (comparador.equals(d.bla)){System.out.println(v[i].valorInteiro);} //se o que estiver dentro de 'd.bla', for uma variavel, ele printa o valor
-			else{
-				//System.out.println("Variavel não existente!!!");
+			//System.out.println(comparador+"  YYYYYY  "+d.bla);
+			if (comparador.equals(d.bla)){
+				if (v[i].valorInteiro != -99){System.out.println(v[i].valorInteiro);}
+				if (v[i].valorQuebrado != -99){System.out.printf("%.2f %n", v[i].valorQuebrado);}
 				break;
 			}
+		}
+	}
+	public char intDouble(String valor){
+		int cont=0;
+		for (int i=0;i<valor.length();i++){
+			if (valor.charAt(i) == '.'){cont ++;}
+		}
+		if (cont == 0){
+			val = Integer.parseInt(valor);
+			return 'I';
+		}
+		else{
+			valD = Double.parseDouble(valor);
+			return 'D';
 		}
 	}
 }
