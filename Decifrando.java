@@ -5,9 +5,10 @@ class Decifrando{
 	private char[] importante = {'(',')','=',':','{','}',' ','"'};
 	private char[] nome;
 	private char[] valor;
-	private char c,c1,a,res,o;
+	private char iff,c,c1,a,res,o;
 	private int x,i,val,inc;
 	public String nomeFinal,valorFinal,bla;
+	public char[] condicao;
 
 	public Decifrando(){
 		this.x=0;
@@ -18,12 +19,26 @@ class Decifrando{
 		this.nomeFinal="";
 		this.valorFinal="";
 		this.nome = new char[15];
-		for (i=0;i<nome.length;i++){this.nome[i]='@';}
 		this.valor = new char[15];
-		for (i=0;i<valor.length;i++){this.valor[i]='@';}
+		for (i=0;i<nome.length;i++){
+			this.nome[i]='@';
+		}
+		for (i=0;i<valor.length;i++){
+			this.valor[i]='@';
+		}
 	}
 
 	public char cheqDados(char n){
+		if(this.nome == "if"){ //se o nome for igual a if ele pega os parametros
+			iff = true;
+		}
+		if(iff == true){
+			ifResult = cheqIf(n); //chama o cheqIf para jogar guardar os parametros dentro do vetor, para usar depois
+			if(ifResult == false){// se for falso, quer dizer que os parametros acabaram, portanto não chama mais
+				iff = false;
+			}
+		}
+
 		inc++;
 		//System.out.println(inc);
 		while (n != ';'){ // enquanto o caracter for diferente de ";", ele entra neste while
@@ -45,6 +60,19 @@ class Decifrando{
 		}
 		return 'F';
 	}
+
+	public char cheqIf(char n){
+		this.condicao = n; //armazena as condições(parametros) do if dentro do vetor
+		if(n == ")"){//se for ) quer dizer que if acabou seus paremetros
+			return false;
+		}
+		return true;
+	}
+
+	public String getCondicao(){
+		return this.condicao;
+	}
+
 	public char setAlf(char n,int inc){
 		for (x=0;x<26;x++){ // percorre o vetor alfabeto para ver se é uma letra
 			a = alfabeto[x];
@@ -57,7 +85,7 @@ class Decifrando{
 		return 'I';
 	}
 	public char setInt(char n,int inc){
-		for (x=0;x<11;x++){ 
+		for (x=0;x<11;x++){
 			c = numeros[x];
 			//System.out.println(n+" "+c);
 			if (this.c1 == 'S'){
@@ -72,8 +100,8 @@ class Decifrando{
 		return 'O';
 	}
 	public char setOpe(char n){
-		for (x=0;x<6;x++){ 
-			o = operaçao[x]; 
+		for (x=0;x<6;x++){
+			o = operaçao[x];
 			//System.out.println(n+" "+c);
 			if (n == o){
 				return n;// retorna o operador;
@@ -83,7 +111,7 @@ class Decifrando{
 	}
 	/* Nesta função ja foi implementado o "imp(variavel)",
 	porem falta implementar quando for para imprimir algo que estiver dentro de aspas. exe:"imp("valor = ")"*/
-	
+
 	public char cheqChar(char n){//aqui só entra se for um caracter especial, ****FALTA TERMINAR***
 		if (n == '='){
 			this.c1 = 'S';

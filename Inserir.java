@@ -2,23 +2,22 @@
   P = proximo;
   B = busca;
   F = Fim;
-  S = Operação;	
+  S = Operação;
 */
-
-
-
-
 class Inserir{
 	private String nome,valor,comparador;
 	private int val,som=0;
 	private double valD;
-	private char iD,ret, op='0';
+	private char operador, iD, ret, op='0';
 	public Interpretador intp = new Interpretador();
 	public Variavel[] v = intp.getVari();
 	public Decifrando d = new Decifrando();
+	public Condicional c = new Condicional();
 
 	public char insere(char n,int i){
-		if (som == 1){som=0;}
+		if (som == 1){
+			som = 0;
+		}
 		ret = d.cheqDados(n);//chama a funçao cheqDados, e passa o caracter que esta selecionado, tem um char como retorno
 		if (ret == 'I'){// se retornar um "I", quer dizer que foi encontrado um igual na linha
 			nome = d.getNome();// salva o nome
@@ -35,8 +34,12 @@ class Inserir{
 			valor = ""; // zera a string valor
 			valor = d.getValor(); // busca o valor que esta antes do operador
 			iD = intDouble(valor);
-			if (iD == 'I'){intp.setValoresInt(val,som);}
-			else {intp.setValoresDbl(valD,som);}
+
+			if (iD == 'I'){
+				intp.setValoresInt(val,som);
+			}else{
+				intp.setValoresDbl(valD,som);
+				}
 			//val = Integer.parseInt(valor); // transforma para inteiro
 			//intp.setValoresInt(val,som); // passa esse valor para um vetor da classe interpretador(que depois vai ser feita a soma
 			limpaValor();  // limpa o valor do vetor da classe Decifrando;
@@ -66,6 +69,7 @@ class Inserir{
 		}
 		return 'P';
 	}
+
 	public void imprime(){
 		intp.imprime();
 	}
