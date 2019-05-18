@@ -1,6 +1,5 @@
 class Operador{
-	public int soma, diminui, multiplica, resto, divisaoInteira;
-	public double soma1, diminui1, multiplica1, divisao1, resto1, divisao, divisaoInteira1;
+	public double soma, diminui, multiplica, divisao, resto, divisaoInteira;
 
 	public Operador(){
 		this.soma = 0;
@@ -9,47 +8,23 @@ class Operador{
 		this.divisao = 0;
 		this.divisaoInteira = 0;
 		this.resto = 0;
-		this.soma1 = 0.0;
-		this.diminui1 = 0.0;
-		this.multiplica1 = 0.0;
-		this.divisao1 = 0.0;
-		this.resto1 = 0.0;
-		this.divisaoInteira1 = 0.0;
 	}
-	public void setSoma(int a,int b){
+	public void setSoma(double a,double b){
 		this.soma = a + b;
 	}
-	public void setDiminui(int a,int b){
+	public void setDiminui(double a,double b){
 		this.diminui = a - b;
 	}
-	public void setMultiplica(int a,int b){
+	public void setMultiplica(double a,double b){
 		this.multiplica = a * b;
 	}
-	public void setDivisao(int a,int b){
+	public void setDivisao(double a,double b){
 		this.divisao = ((double )a / b);
 	}
-	public void setResto(int a,int b){
+	public void setResto(double a,double b){
 		this.resto = a % b;
 	}
-	public void setSoma1(double a,double b){
-		this.soma1 = a + b;
-	}
-	public void setDiminui1(double a,double b){
-		this.diminui1 = a - b;
-	}
-	public void setMultiplica1(double a,double b){
-		this.multiplica1 = a * b;
-	}
-	public void setDivisao1(double a,double b){
-		this.divisao1 = a / b;
-	}
-	public void setResto1(double a,double b){
-		this.resto1 = a % b;
-	}
-	public void setDivisaoInteira(int a,int b){
+	public void setDivisaoInteira(double a,double b){
 		this.divisaoInteira = a / b;
-	}
-	public void setDivisaoInteira1(double a,double b){
-		this.divisaoInteira1 = a / b;
 	}
 }

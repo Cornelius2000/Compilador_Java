@@ -1,11 +1,9 @@
 class Variavel{
-	public int valorInteiro;
-	public double valorQuebrado;
+	public double valor;
 	public String nome;
 
 	public Variavel(){
 		this.nome = "@";
-		this.valorInteiro = -99;
-		this.valorQuebrado = -99;
+		this.valor = -99;
 	}
 }
