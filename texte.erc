@@ -1,9 +1,0 @@
-a = 15;
-b = a + 10;
-c = b+20;
-a = 70+b;
-imp("Hello World!!!");
-imp("trabalho prog1!!!");
-imp(a);
-imp(b);
-imp(c);
