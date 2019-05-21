@@ -5,8 +5,6 @@
 	F = fim (;);
 	S = Esta fazendo uma operação; */
 
-
-
 import java.io.File;
 import java.util.Scanner;
 

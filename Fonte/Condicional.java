@@ -1,0 +1,4 @@
+class Condicional extends Decifrando{
+
+
+}
