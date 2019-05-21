@@ -21,7 +21,7 @@ class Main{
 
 			while(input.hasNextLine()){
 				line = input.nextLine(); //captura uma linha do testo
-				arq.linha.add(line);
+				arq.arquivoLeitura.add(line);
 				interador++; // controla as posiçoes do vetor
 			}
 			arq.setLinha();

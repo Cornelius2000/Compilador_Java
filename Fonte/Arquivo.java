@@ -3,19 +3,23 @@ import java.util.ArrayList;
 class Arquivo{
 	public String nome="",linhas;
 	public Inserir ins = new Inserir();
-	public ArrayList< String >linha;
+	public ArrayList< String >arquivoLeitura;
 	public ArrayList< Character >texto;
-	private int posicaoChar;
+	private int posicaoChar,linhaInicial=0,posicaoChave=-1;
 	public char caracter,retorno,passos;
 
 	public Arquivo(){
-		this.linha = new ArrayList< String >();
+		this.arquivoLeitura = new ArrayList< String >();
 		this.texto = new ArrayList< Character >();
 		this.posicaoChar = -1;
 	}
 	public void setLinha(){
-		for (int i=0;i<linha.size();i++){
-			this.linhas = linha.get(i);
+		for (int i=linhaInicial;i<arquivoLeitura.size();i++){
+			this.linhas = arquivoLeitura.get(i);
+			if (ins.getIf() == false){
+				condicional(i);
+				continue;
+			}
 			quebraLinha(i);
 		}
 	}
@@ -34,6 +38,18 @@ class Arquivo{
 			if (retorno == 'A'){imprimivel();}
 		}
 		ins.limpa();// limpa os vetores da classe Decifrando
+	}
+	public void condicional(int d){
+		String busca;
+		for (int i=linhaInicial;i<arquivoLeitura.size();i++){
+			busca = arquivoLeitura.get(i);
+			posicaoChave = busca.indexOf('}');
+			if (posicaoChave != -1){
+				linhaInicial = i+1;
+				ins.clearIf();
+				break;
+			}
+		}
 	}
 	public void imprimivel(){
 		posicaoChar = linhas.indexOf('"');

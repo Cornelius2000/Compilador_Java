@@ -5,9 +5,9 @@
   S = Operação;
 */
 class Inserir{
-	public String nome,valor,comparador,textoImprimir="";
+	public String nome,valor,comparador,textoImprimir="0";
 	private int posicaOperador=0,posicao;
-	private double valorInserir;
+	private double valorInserir,valorPosicao;
 	private char retornoDecifrando, operador='0';
 	private boolean variavelExistente=false,imprimivel = false;
 	public Interpretador intp = new Interpretador();
@@ -28,6 +28,10 @@ class Inserir{
 			if (d.aspas == false){
 				if (d.controlador.equals("imp")){
 					imprimivel = true;
+					if (textoImprimir != "0"){
+						imp.imprimeJunto(buscaVariavel(),textoImprimir);
+						return 'F';
+					}
 					imp.imprime(buscaVariavel());
 					return 'F';
 				}
@@ -40,6 +44,10 @@ class Inserir{
 				}
 			}
 			return 'F';
+		}
+		if (retornoDecifrando == 'C'){
+			desvendaCondicional();
+			return 'P';
 		}
 		if (retornoDecifrando == 'A'){return 'A';}
 		if ((retornoDecifrando != 'F')&&(retornoDecifrando != 'I')&&(retornoDecifrando != 'P')){ // Se não retornar nehuma das opções, quer dizer que é um operador
@@ -61,6 +69,22 @@ class Inserir{
 		}
 		return 'P';
 	}
+	public void desvendaCondicional(){
+		nome="";
+		for (int i=0;i<d.parametro.size();i++){
+			nome += d.parametro.get(i);
+		}
+		if(d.numero == false){
+			d.bla = nome;
+			d.setParametro(buscaVariavel());
+			d.parametro.clear();
+		}
+		else{
+			d.setParametro(Double.parseDouble(nome));
+			d.numero = false;
+			d.parametro.clear();
+		}
+	}
 	public void declaraNome(int i){
 		v[i].nome=nome;//manda para o vetor, da classe variavel
 		d.limpaNome();
@@ -72,6 +96,8 @@ class Inserir{
 			varr = v[i].nome;
 			if (varr.equals(nome)){
 				posicao = i;
+				valorPosicao = v[i].valor;
+				d.limpaNome();
 				return true;
 			}
 		}
@@ -111,6 +137,12 @@ class Inserir{
 		else{transformaValor();}
 		v[posicao].valor = valorInserir;
 	}
+	public void clearIf(){
+		d.clearCondional();
+	}
+	public boolean getIf(){
+		return d.getCondicional();
+	}
 	public void imprimeTexto(){
 		System.out.println(textoImprimir);
 	}
@@ -118,6 +150,8 @@ class Inserir{
 		intp.imprime();
 	}
 	public void limpa(){
+		nome="";
+		textoImprimir="0";
 		imprimivel = false;
 		d.limpaVet();
 	}

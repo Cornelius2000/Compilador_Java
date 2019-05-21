@@ -1,28 +1,28 @@
+import java.util.ArrayList;
+
 class Interpretador{
 	private Variavel[] vari;
 	public Operador o;
 	public char operaçao;
-	public double[] valor;
+	public ArrayList< Double > valor;
 
 
 	public Interpretador(){
 		this.o = new Operador();
-		this.valor = new double[2];
-		for (int y=0;y<2;y++){this.valor[y]=-99;}
+		this.valor = new ArrayList< Double >();
 		this.vari = new Variavel[15];
 		for (int i=0;i<this.vari.length;i++){
 			this.vari[i] = new Variavel();
 		}
 	}
 	public void limpaValor(){//serve para limpar os valores que serão feitas as operações
-		this.valor = new double[2];
-		for (int y=0;y<2;y++){this.valor[y]=-99;}
+		this.valor.clear();
 	}
 	public void setOperador(char c){//fica armazenado a operaçao que sera feita
 		this.operaçao = c;
 	}
 	public void setValores(double v,int i){//colocar os valores Double das operações
-		this.valor[i] = v;
+		this.valor.add(v);
 	}
 	public void setVari(Variavel[] v){
 		this.vari = v;
@@ -32,27 +32,27 @@ class Interpretador{
 	}
 	public void desvOperaçao(int i){//aqui vai ser verificado qual é a operação a ser feita
 		if (this.operaçao == '+'){
-			o.setSoma(this.valor[0],this.valor[1]);
+			o.setSoma(this.valor.get(0),this.valor.get(1));
 			this.vari[i].valor = o.soma;
 		}
 		if (this.operaçao == '-'){
-			o.setDiminui(this.valor[0],this.valor[1]);
+			o.setDiminui(this.valor.get(0),this.valor.get(1));
 			this.vari[i].valor = o.diminui;
 		}
 		if (this.operaçao == '*'){
-			o.setMultiplica(this.valor[0],this.valor[1]);
+			o.setMultiplica(this.valor.get(0),this.valor.get(1));
 			this.vari[i].valor = o.multiplica;
 		}
 		if (this.operaçao == '/'){
-			o.setDivisao(this.valor[0],this.valor[1]);
+			o.setDivisao(this.valor.get(0),this.valor.get(1));
 			this.vari[i].valor = o.divisao;
 		}
 		if (this.operaçao == '%'){
-			o.setResto(this.valor[0],this.valor[1]);
+			o.setResto(this.valor.get(0),this.valor.get(1));
 			this.vari[i].valor = o.resto;
 		}
 		if (this.operaçao == '!'){
-			o.setDivisaoInteira(this.valor[0],this.valor[1]);
+			o.setDivisaoInteira(this.valor.get(0),this.valor.get(1));
 			this.vari[i].valor = (int)o.divisaoInteira;
 		}
 	}

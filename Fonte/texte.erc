@@ -1,7 +1,9 @@
-a = 8;
-b = 6;
-c = 20;
+a = 10;
 
-se(9 > 1){
-  imp("oláa");
+se(a > 15){
+	imp("maior");
 }
+se(a < 15){
+	imp("menor")
+}
+imp("O valor de a é: "a);
