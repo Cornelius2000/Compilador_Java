@@ -1,12 +1,12 @@
 a = 0;
-b = 6;
-c = 8;
-enq(6 < 1)[
+b = 9;
+se(a < b){
+	imp("é menor");
+}
+else(){
+	imp("é maior")
+}
+enq(a < b){
 	imp(a);
-	imp(b);
-	imp(c);
 	a = a+1;
-]
-
-imp(a);
-imp(b);
+}

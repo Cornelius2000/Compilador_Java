@@ -3,7 +3,7 @@ import java.util.ArrayList;
 class Condicional{
 	private char[] condicional = {'|','$','=','>','<'};
 	public ArrayList< Character > condicaoIF;
-	public boolean operadorIF = false,retornoIF = true,pulaIF = false;
+	public boolean operador = false,retorno = true,pulaIF = false;
 	public double[] parametro;
 	public ArrayList< Character > op1;
 	public String op;
@@ -19,10 +19,13 @@ class Condicional{
 		for(int i = 0; i < op1.size(); i++){
 			this.op += op1.get(i);
 		}
-		retornoIF = veriCondicao();
-		operadorIF = false;
+		retorno = veriCondicao();
+		operador = false;
  	}
 	public boolean veriCondicao(){
+		if(this.op.equals("!=")){
+			if(parametro[0] != parametro[1]){return true;}
+		}
 		if(this.op.equals("==")){
 			if(parametro[0] == parametro[1]){return true;}
 		}

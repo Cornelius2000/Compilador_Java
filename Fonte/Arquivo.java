@@ -5,8 +5,9 @@ class Arquivo{
 	public Inserir ins = new Inserir();
 	public ArrayList< String >arquivoLeitura;
 	public ArrayList< Character >texto;
-	private int posicaoChar,linhaInicial,posicaoChave=-1;
+	private int posicaoChar,linhaInicial,posicaoChave=-1,linhaRepetir=0,linhaFinal =0;
 	public char caracter,retorno,passos;
+	public boolean repetirLaco = false;
 
 	public Arquivo(){
 		this.arquivoLeitura = new ArrayList< String >();
@@ -16,9 +17,18 @@ class Arquivo{
 	public void setLinha(){
 		for (linhaInicial=0;linhaInicial<arquivoLeitura.size();linhaInicial++){
 			this.linhas = arquivoLeitura.get(linhaInicial);
-			if (ins.getIf() == false){
-				condicional(linhaInicial);
+			if ((linhaInicial == linhaFinal)&&(repetirLaco == true)){
+				linhaInicial = linhaRepetir;
 				continue;
+			}
+			if (ins.getIf() == false){
+				condicional();
+				continue;
+			}
+			if (ins.getRepete() == true){
+				repetirLaco = true;
+				linhaRepetir = linhaInicial - 2;
+				laço();
 			}
 			quebraLinha(linhaInicial);
 		}
@@ -39,13 +49,26 @@ class Arquivo{
 		}
 		ins.limpa();// limpa os vetores da classe Decifrando
 	}
-	public void condicional(int d){
+	public void laço(){
 		String busca;
 		for (int i=linhaInicial;i<arquivoLeitura.size();i++){
 			busca = arquivoLeitura.get(i);
 			posicaoChave = busca.indexOf('}');
 			if (posicaoChave != -1){
-				linhaInicial = i+1;
+				linhaFinal = i;					
+				ins.clearIf();
+				break;
+			}
+		}
+	}
+	public void condicional(){
+		String busca;
+		for (int i=linhaInicial;i<arquivoLeitura.size();i++){
+			busca = arquivoLeitura.get(i);
+			posicaoChave = busca.indexOf('}');
+			if (posicaoChave != -1){
+				linhaInicial = i;
+				ins.setRodouIf();
 				ins.clearIf();
 				break;
 			}
