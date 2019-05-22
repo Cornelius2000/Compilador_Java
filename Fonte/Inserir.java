@@ -17,6 +17,7 @@ class Inserir{
 	//public Condicional c = new Condicional();
 
 	public char insere(char n,int i){
+		d.posicaoLinha = i;
 		if (posicaOperador == 1){posicaOperador = 0;}
 		retornoDecifrando = d.cheqDados(n);//chama a funçao cheqDados, e passa o caracter que esta selecionado, tem um char como retorno
 		if (retornoDecifrando == 'I'){// se retornar um "I", quer dizer que foi encontrado um igual na linha

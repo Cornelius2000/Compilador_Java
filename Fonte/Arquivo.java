@@ -5,7 +5,7 @@ class Arquivo{
 	public Inserir ins = new Inserir();
 	public ArrayList< String >arquivoLeitura;
 	public ArrayList< Character >texto;
-	private int posicaoChar,linhaInicial=0,posicaoChave=-1;
+	private int posicaoChar,linhaInicial,posicaoChave=-1;
 	public char caracter,retorno,passos;
 
 	public Arquivo(){
@@ -14,13 +14,13 @@ class Arquivo{
 		this.posicaoChar = -1;
 	}
 	public void setLinha(){
-		for (int i=linhaInicial;i<arquivoLeitura.size();i++){
-			this.linhas = arquivoLeitura.get(i);
+		for (linhaInicial=0;linhaInicial<arquivoLeitura.size();linhaInicial++){
+			this.linhas = arquivoLeitura.get(linhaInicial);
 			if (ins.getIf() == false){
-				condicional(i);
+				condicional(linhaInicial);
 				continue;
 			}
-			quebraLinha(i);
+			quebraLinha(linhaInicial);
 		}
 	}
 	public void quebraLinha(int i){

@@ -2,8 +2,9 @@ a = 10;
 
 se(a > 15){
 	imp("maior");
+	imp("O valor de a é: "a);
 }
 se(a < 15){
-	imp("menor")
+	imp("menor");
+	imp("O valor de a é: "a);
 }
-imp("O valor de a é: "a);

@@ -8,7 +8,7 @@ class Decifrando{
 	private char[] importante = {'(',')','=',':','{','}','"','>','<'};
 	public ArrayList< Character > nome,valor,parametro;
 	private char passouIgual,retornoMetodos,operacao,num,alfa;
-	public int val,qntAspas=0,interador=0;
+	public int val,qntAspas=0,interador=0,posicaoLinha;
 	public String nomeFinal,valorFinal,bla,controlador;
 	public boolean temVariavel=false,aspas = false,importa = false,numero = false;
 
