@@ -1,0 +1,8 @@
+int a;
+a =1;
+
+se(a > 1){
+  imp("Maior");
+}else{
+  imp("Menor");
+}

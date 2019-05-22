@@ -1,0 +1,21 @@
+int i;
+int j;
+i = 0;
+j = i;
+
+enq(i < 3){
+  se(i == 0){
+    imp("Zero");
+  }else{
+    imp("Outro");
+  }
+  i = i + 1;
+}
+
+se(i == 3){
+  if(j == 0){
+    imp("Ok");
+  }else{
+    imp("Erro");
+  }
+}

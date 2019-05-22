@@ -1,0 +1,5 @@
+a = 2;
+b = 6;
+m = a + b;
+m = m/2;
+imp("Media: "m);
