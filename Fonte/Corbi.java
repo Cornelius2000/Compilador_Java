@@ -8,7 +8,7 @@
 import java.io.File;
 import java.util.Scanner;
 
-class Main{
+class Corbi{
 	public static void main(String[] args){
 		try {
 			String line;
