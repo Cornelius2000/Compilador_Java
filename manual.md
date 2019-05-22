@@ -117,7 +117,7 @@
 
 
 
-### Estrutura de Repetição | enq[] 
+### Estrutura de Repetição | enq[ ] 
     
     A Estrutura de repetição é semelhante com o comparador, para usá-lá
     é preciso ter dois parametros e uma condição, iniciando o bloco com 
