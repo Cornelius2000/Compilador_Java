@@ -3,18 +3,18 @@
   B = busca;
   F = Fim;
   S = Operação;
+	L = Laço;
 */
 class Inserir{
 	public String nome,valor,comparador,textoImprimir="0";
-	private int posicaOperador=0,posicao;
-	private double valorInserir,valorPosicao;
-	private char retornoDecifrando, operador='0';
-	private boolean variavelExistente=false,imprimivel = false;
+	public int posicaOperador=0,posicao;
+	public double valorInserir,valorPosicao;
+	public char retornoDecifrando, operador='0';
+	public boolean variavelExistente=false,imprimivel = false;
 	public Interpretador intp = new Interpretador();
 	public Variavel[] v = intp.getVari();
 	public Decifrando d = new Decifrando();
 	public Imprimir imp = new Imprimir();
-	//public Condicional c = new Condicional();
 
 	public char insere(char n,int i){
 		d.posicaoLinha = i;

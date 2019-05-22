@@ -29,7 +29,7 @@ class Main{
 			input.close();
 		}
 		catch(Exception e){
-			System.out.println("blablabla");
+			System.out.println("Erro, Verifique a sintaxe da linguagem");
 			e.printStackTrace();
 		}
 	}

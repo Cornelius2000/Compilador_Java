@@ -1,10 +1,12 @@
-a = 10;
+a = 0;
+b = 6;
+c = 8;
+enq(6 < 1)[
+	imp(a);
+	imp(b);
+	imp(c);
+	a = a+1;
+]
 
-se(a > 15){
-	imp("maior");
-	imp("O valor de a é: "a);
-}
-se(a < 15){
-	imp("menor");
-	imp("O valor de a é: "a);
-}
+imp(a);
+imp(b);

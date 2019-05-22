@@ -5,12 +5,15 @@ class Decifrando{
 	private char[] alfabeto = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 	private char[] numeros = {'0','1','2','3','4','5','6','7','8','9','.'};
 	private char[] operaçoes = {'+','-','*','/','%','!'};
+	private char[] condicional = {'>','<','=','!'};
 	private char[] importante = {'(',')','=',':','{','}','"','>','<'};
-	public ArrayList< Character > nome,valor,parametro;
+	public ArrayList< Character > nome,valor,parametro,block,exp;
 	private char passouIgual,retornoMetodos,operacao,num,alfa;
 	public int val,qntAspas=0,interador=0,posicaoLinha;
-	public String nomeFinal,valorFinal,bla,controlador;
-	public boolean temVariavel=false,aspas = false,importa = false,numero = false;
+	public int parametro1=0;
+	public int parametro2=0;
+	public String nomeFinal,valorFinal,bla,controlador,op;
+	public boolean temVariavel=false,aspas = false,importa = false,numero = false,contLaco=false,contN=true,retLaco=false;
 
 	public Decifrando(){
 		this.passouIgual='N';
@@ -20,9 +23,162 @@ class Decifrando{
 		this.nome = new ArrayList< Character >();
 		this.valor = new ArrayList< Character >();
 		this.parametro = new ArrayList< Character >();
+		this.block = new ArrayList< Character >();
+		this.exp = new ArrayList< Character >();
 	}
 
+	public void veriCondicial(char n){ 
+		if(contLaco == true && n != ']'){
+			if(n != ')' && contN == true){
+				if(n == ' '){
+					this.exp.add('@');
+				}else{ 
+					this.exp.add(n);
+				}
+			}else{
+				this.exp.add('@');
+				contN = false;
+			}
+			if(contN == false){ 
+				this.block.add(n);
+			}
+		}
+		if(contLaco == true && n == ']'){
+			contLaco = false;
+			contN = true;
+			System.out.println(this.block);
+			System.out.println(this.exp);
+		}		
+		 if(this.nome.size() == 3){
+			 if(this.nome.get(0) == 'e' && this.nome.get(1) == 'n' && this.nome.get(2) == 'q'){
+					contLaco = true;
+			 }			 	
+		 }
+	}
+	
+	public boolean veriCondicao(){//ela vai verificar se o laço estiver true, ou false
+		if(this.op.equals("==")){
+			if(this.parametro1 == this.parametro2){
+				return true;
+			}
+		}
+		if(this.op.equals(">=")){
+			if(this.parametro1 >= this.parametro2){
+				return true;
+			}
+		}
+		if(this.op.equals("<=")){
+			if(this.parametro1 <= this.parametro2){
+				return true;
+			}
+		}
+		if(this.op.equals(">")){
+			if(this.parametro1 > this.parametro2){
+				return true;
+			}
+		}
+		if(this.op.equals("<")){
+			if(this.parametro1 < this.parametro2){
+				return true;
+			}
+		}
+		if(this.op.equals("!=")){
+			if(this.parametro1 != this.parametro2){
+				return true;
+			}
+		}
+		return false; // se n entrar nas condicao quer, retorna que o if eh falso
+	}
+	
+	public void getDecifraOperador(){ //vai verificar qual é o operador dentro do laço
+		this.op = "";
+    for(int i = 0; i < exp.size(); i++){
+			for(int j = 0; j < condicional.length; j++){
+				if(this.exp.get(i) == this.condicional[j]){
+						this.op += this.condicional[j];
+				}
+			}
+    }
+  }
+
+	public void decifraToken(){ //vai decifrar quais sao os parametros dentro do laço
+		String tempNum = "";  
+		int cont = 0, d=0;
+		boolean flag = false, ehLetra = false;
+
+		for(int i = 0; i < exp.size(); i++){
+			for(int j = 0; j < numeros.length; j++){
+				if(this.exp.get(i) == this.numeros[j]){
+					tempNum += this.numeros[j];					
+				}
+			}			
+			// 
+			// for(int k=0; k<alfabeto.length; k++){
+			// 	if(this.exp.get(i) == this.alfabeto[k]){     //FALTA PEGAR O VALOR DAS VARIAVEIS 
+			// 		tempNum += this.alfabeto[k];
+			// 		ehLetra = true;
+			// 	}
+			// }
+			if(this.exp.get(i) == '@'){
+				if(cont == 0){		
+					this.parametro1 = Integer.parseInt(tempNum);
+					tempNum = "";
+					cont += 1;
+				}
+			}
+			if(this.exp.get(i) == '@'){
+				cont+=1;
+			}
+			if(this.exp.get(i) == '@'){
+			 	if(cont == 4){						
+					this.parametro2 = Integer.parseInt(tempNum);
+					// System.out.println(this.parametro2);
+					tempNum = " ";
+					cont += 1;
+				}
+			}	
+		}
+	}
+	
+	// public double buscaVariavel(String d){
+	// 	for (int i=0;i<v.length;i++){
+	// 		d = v[i].nome;
+	// 		if (v[i].valor != -99){
+	// 			return v[i].valor;
+	// 		}
+	// 	}
+	// 	return 0;
+	// }
+
+	public void chamar(char n){
+		veriCondicial(n);
+		getDecifraOperador();
+		decifraToken();
+		
+	}
+	
+
 	public char cheqDados(char n){
+		
+		this.retLaco = veriCondicao();
+		System.out.println("RETORNO DO ENQ "+retLaco);
+		
+		if(this.retLaco == false){
+			System.out.println(n); //**FALTA ORGANIZAR O RETORNO, COM A LINHA DO INTERRADOR 
+			if(n == ']'){
+				chamar(n);
+				
+				this.retLaco = true;
+			}else{
+			 	return 'P';
+			}
+		}
+		
+		// if(retLaco == true){
+		// 	return 'L';
+		// }
+		
+		// 
 		while (n != ';'){ // enquanto o caracter for diferente de ";", ele entra neste while
 			this.nomeFinal="";
 			this.valorFinal="";
