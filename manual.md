@@ -39,7 +39,6 @@
 		| -  |  diferença|
 		| /  |  divisão
 		| !  |  divisão inteira
-		| ** |  potência
 		| *  |  multiplicação
 		| =  |  atribuição
 		| == |  comparação
@@ -108,7 +107,7 @@
 			se(a > b){
 				a = a + 1;
 			}
-			else{
+			else(){
 				b = b + 1;
 			}
 ---
