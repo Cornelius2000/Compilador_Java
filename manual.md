@@ -19,7 +19,7 @@
 
 ### Sintaxe:
 	Para determinar o fim de cada linha, é utilizado o ponto e virgula ; já
-	para a indentação dos blocos de código, usa as chaves { indicando o começoe },
+	para a indentação dos blocos de código, usa as chaves { indicando o começo e },
 	o fim do mesmo.
 	Preferencialmente a identação não é obrigatória, mas de bom costume usa-se todos os
 	blocos alinhados para evitar pequenos 'bugs' e dor de cabeça.
@@ -54,21 +54,19 @@
 ### Declaração de Variaveis e Atribuição |  =
 
 		Para declarar uma variavel é preciso utilizar uma letra do alfabeto,ou mais,
-		se preferir porém é melhor utilizar sómente uma para evitar futuros erros.
+		se preferir, por exemplo abc.
 		Logo, para atribuir um valor int, ou double basta atribuir o valor normalmente
 		que ele irá reconhecer que se trata desse tipo. 
 		Todos os valores inteiros são convertidos para double.
-		Já para atribuir uma String (str), a uma variavel, basta coloca-lá entre aspas
-		e igualar, veja que não é necessário antes de atribuir especificar que é um numero
-		ou uma letra, por esse fato é preciso ter cuidado na hora de realizar as operaçoes
-		para não dar conflitos entre tipos, caso isso ocorra o programa abortará a execução.
+		Veja que não é necessário antes de atribuir especificar que é um numero
+		ou uma letra, é deste determinado tipo, por esse fato é preciso ter cuidado na hora de realizar as operaçoes
+		para não dar conflitos, caso isso ocorra o programa abortará a execução.
 
 >exemplo:
 
 	 		a = 1;
-			c = "ola";
 			b = a+5;
-			ab = 10;
+			abc = 10;
 ---
 
 
@@ -135,5 +133,25 @@
 		  i = i+1;
 		]
     
-    
  ---
+ 
+ 
+ ### Comando de Saída |  imp()
+ 	
+	O comando de saída pode ser usado para imprimir na tela numeros(double), 
+	como também Strings.
+	Para imprimir uma string juntamente com uma variavel não é necessário 
+	nenhuma concatenação, apenas escrevendo a string dentro das aspas e o 
+	valor ou variacel ao lado.
+ 
+ >exemplo:
+ 
+ 		a = 2;
+		imp(a);
+		imp("Valor de a	: "a);
+		imp("Hello World!!!");
+
+
+ 	
+ 
+ 
