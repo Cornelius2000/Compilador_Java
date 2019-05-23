@@ -14,8 +14,7 @@ class Inserir{
 	public Variavel[] v = intp.getVari();
 	public Decifrando d = new Decifrando();
 	public Imprimir imp = new Imprimir();
-	//public Condicional c = new Condicional();
-
+ 
 	public char insere(char n,int i){
 		d.posicaoLinha = i;
 		if (posicaOperador == 1){posicaOperador = 0;}
