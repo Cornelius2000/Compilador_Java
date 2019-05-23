@@ -29,7 +29,7 @@ class Corbi{
 			input.close();
 		}
 		catch(Exception e){
-			System.out.println("blablabla");
+			System.out.println("ERRO: "+e.getMessage());
 			e.printStackTrace();
 		}
 	}

@@ -1,19 +1,20 @@
 i = 0;
 j = i;
 
-enq(i < 3){
+enq(i < 3)[
   se(i == 0){
     imp("Zero");
-  }else{
+  }
+  else(){
     imp("Outro");
   }
   i = i + 1;
-}
-
-se(i == 3){
-  if(j == 0){
+]
+se(i == 3)[
+  se(j == 0){
     imp("Ok");
-  }else{
+  }
+  else(){
     imp("Erro");
   }
-}
+]

@@ -30,7 +30,7 @@ class Interpretador{
 	public Variavel[] getVari(){
 		return this.vari;
 	}
-	public void desvOperaçao(int i){//aqui vai ser verificado qual é a operação a ser feita
+	public void desvOperaçao(int i)throws Exception{//aqui vai ser verificado qual é a operação a ser feita
 		if (this.operaçao == '+'){
 			o.setSoma(this.valor.get(0),this.valor.get(1));
 			this.vari[i].valor = o.soma;

@@ -5,7 +5,7 @@ class Decifrando{
 	private char[] alfabeto = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 	private char[] numeros = {'0','1','2','3','4','5','6','7','8','9','.'};
 	private char[] operaçoes = {'+','-','*','/','%','!'};
-	private char[] importante = {'(',')','=',':','{','}','"','>','<','!'};
+	private char[] importante = {'(',')','=',':','{','}','"','>','<','!',']','['};
 	public ArrayList< Character > nome,valor,parametro;
 	private char passouIgual,retornoMetodos,operacao,num,alfa;
 	public int val,qntAspas=0,interador=0,posicaoLinha,operadores=0;
@@ -91,6 +91,21 @@ class Decifrando{
 	porem falta implementar quando for para imprimir algo que estiver dentro de aspas. exe:"imp("valor = ")"*/
 
 	public char cheqChar(char n){//aqui só entra se for um caracter especial, ****FALTA TERMINAR***
+		if (n == ']'){
+			rodouIF = true;
+			clearCondional();
+			return 'P';
+		}
+		if (n == '['){
+			if ((rodouIF == true)&&(controlador.equals("else"))){return 'P';}
+			if ((rodouIF == false)&&(controlador.equals("else"))){
+				cond.retorno = true;
+				return 'P';
+			}
+			cond.decifraOperador();
+			if((cond.retorno == true)&&(controlador.equals("enq"))){repetir = true;}
+			return 'P';
+		}
 		if (n == '}'){
 			rodouIF = true;
 			clearCondional();
@@ -127,6 +142,7 @@ class Decifrando{
 				return 'P';
 			}
 			if (bla.equals("se")){
+				controlador = bla;
 				limpaNome();
 				cond.operador = true;
 				return 'P';
@@ -223,7 +239,6 @@ class Decifrando{
 		operadores = 0;
 		aspas = false;
 		temVariavel = false;
-		controlador = "";
 		importa = false;
 		numero = false;
 		this.passouIgual = 'N';
@@ -231,6 +246,7 @@ class Decifrando{
 		this.valor.clear();
 	}
 	public void clearCondional(){
+		controlador = "";
 		cond.retorno = true;
 		cond.operador = false;
 		cond.op = "";

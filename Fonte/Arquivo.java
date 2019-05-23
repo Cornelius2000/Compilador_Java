@@ -14,7 +14,7 @@ class Arquivo{
 		this.texto = new ArrayList< Character >();
 		this.posicaoChar = -1;
 	}
-	public void setLinha(){
+	public void setLinha()throws Exception{
 		for (linhaInicial=0;linhaInicial<arquivoLeitura.size();linhaInicial++){
 			this.linhas = arquivoLeitura.get(linhaInicial);
 			if ((linhaInicial == linhaFinal)&&(repetirLaco == true)){
@@ -22,6 +22,13 @@ class Arquivo{
 				continue;
 			}
 			if (ins.getIf() == false){
+				if ((ins.getRepete()==false)&&(repetirLaco == true)&&(ins.getControlador().equals("enq"))){
+					linhaInicial = linhaFinal;
+					ins.setRodouIf();
+					ins.clearIf();
+					continue;
+				}
+				//linhaInicial = linhaFinal;
 				condicional();
 				continue;
 			}
@@ -33,7 +40,7 @@ class Arquivo{
 			quebraLinha(linhaInicial);
 		}
 	}
-	public void quebraLinha(int i){
+	public void quebraLinha(int i)throws Exception{
 		for (int d=0;d<linhas.length();d++){ //anda caracter por caracter desta linha
 			caracter = linhas.charAt(d); // salva este caracter na variavel c
 			retorno = ins.insere(caracter,i);//chama a funçao insere, e passa o caracter que esta selecionado com o valor da linha, tem um char como retorno
@@ -53,7 +60,7 @@ class Arquivo{
 		String busca;
 		for (int i=linhaInicial;i<arquivoLeitura.size();i++){
 			busca = arquivoLeitura.get(i);
-			posicaoChave = busca.indexOf('}');
+			posicaoChave = busca.indexOf(']');
 			if (posicaoChave != -1){
 				linhaFinal = i;					
 				ins.clearIf();

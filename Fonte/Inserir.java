@@ -5,7 +5,7 @@
   S = Operação;
 */
 class Inserir{
-	public String nome,valor,comparador,textoImprimir="0";
+	public String nome,valor,comparador,textoImprimir="0",condicao;
 	private int posicaOperador=0,posicao;
 	private double valorInserir,valorPosicao;
 	private char retornoDecifrando, operador='0';
@@ -14,7 +14,8 @@ class Inserir{
 	public Variavel[] v = intp.getVari();
 	public Decifrando d = new Decifrando();
 	public Imprimir imp = new Imprimir();
- 
+	//public Condicional c = new Condicional();
+
 	public char insere(char n,int i){
 		d.posicaoLinha = i;
 		if (posicaOperador == 1){posicaOperador = 0;}
@@ -70,6 +71,12 @@ class Inserir{
 		return 'P';
 	}
 	public void desvendaCondicional(){
+		if (d.controlador.equals("se")){
+			condicao = d.controlador;
+		}
+		if (d.controlador.equals("else")){
+			condicao = d.controlador;
+		}
 		nome="";
 		for (int i=0;i<d.parametro.size();i++){
 			nome += d.parametro.get(i);
@@ -140,6 +147,9 @@ class Inserir{
 	public void setRodouIf(){
 		d.rodouIF = false;
 	}
+	public String getControlador(){
+		return d.controlador;
+	}
 	public void clearIf(){
 		d.clearCondional();
 	}
@@ -167,7 +177,7 @@ class Inserir{
 	public void limpaValor(){
 		d.limpaVal();
 	}
-	public void operaçao(int i){
+	public void operaçao(int i)throws Exception{
 		if (this.operador != '0'){
 			if (variavelExistente == false){intp.desvOperaçao(i);}//chama a função desvOperação, da classe interpretador, com o numero da linha que esta lendo
 			else {intp.desvOperaçao(posicao);}
